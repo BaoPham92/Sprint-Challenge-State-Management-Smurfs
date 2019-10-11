@@ -11,6 +11,7 @@ import {
 
 const smurfDefaultState = {
     smurfs: [],
+    localSmurf: [],
     ifFetching: false,
     error: undefined
 }
@@ -20,12 +21,18 @@ export default (state = smurfDefaultState, action) => {
         case CREATE_SMURF:
             return {
                 ...state,
-                smurfs: [...action.payload]
+                localSmurf: [
+                    ...state.localSmurf,
+                    action.payload,
+                ]
             }
         case UPDATE_SMURF:
             return {
                 ...state,
-                smurfs: [...action.payload]
+                localSmurf: [
+                    ...state.localSmurf,
+                    action.payload
+                ]
             }
         case FETCHING:
             return {
